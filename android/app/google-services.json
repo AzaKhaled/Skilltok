@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "215643034568",
+    "project_id": "skilltok-bf45d",
+    "storage_bucket": "skilltok-bf45d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215643034568:android:e41975063f9cad1cbb66fd",
+        "android_client_info": {
+          "package_name": "com.example.skilltok"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkgsTRd0U4kmEvdNgSeP9s6NDcMpmG0b4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
