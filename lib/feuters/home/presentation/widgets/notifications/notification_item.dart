@@ -15,7 +15,7 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         if (!notification.isRead) {
           NotificationCubit.get(

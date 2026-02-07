@@ -10,8 +10,13 @@ import 'package:skilltok/feuters/home/presentation/widgets/commnet/comment_list.
 
 class CommentsSheet extends StatefulWidget {
   final PostModel initialPost;
+  final bool showHeader;
 
-  const CommentsSheet({super.key, required this.initialPost});
+  const CommentsSheet({
+    super.key,
+    required this.initialPost,
+    this.showHeader = true,
+  });
 
   @override
   State<CommentsSheet> createState() => _CommentsSheetState();
@@ -28,7 +33,6 @@ class _CommentsSheetState extends State<CommentsSheet> {
   @override
   Widget build(BuildContext context) {
     final commentCubit = CommentCubit.get(context);
-    // Use viewInsets to handle keyboard in BottomSheet
     final bottomInset = MediaQuery.of(context).viewInsets.bottom;
 
     final themeCubit = ThemeCubit.get(context);
@@ -37,7 +41,6 @@ class _CommentsSheetState extends State<CommentsSheet> {
     return BlocListener<CommentCubit, CommentStates>(
       listener: (context, state) {
         if (state is CommentSetReplyState) {
-          // focus input when reply is set
           FocusScope.of(context).requestFocus(inputFocusNode);
         } else if (state is CommentDeleteCommentSuccessState) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -64,32 +67,33 @@ class _CommentsSheetState extends State<CommentsSheet> {
         ),
         child: Column(
           children: [
-            // Drag handle and Title
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 40,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(2),
+            if (widget.showHeader) ...[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 4,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(2),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Text(
-              appTranslation().get('comments'),
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-                color: isDark ? Colors.white : Colors.black,
+              Text(
+                appTranslation().get('comments'),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: isDark ? Colors.white : Colors.black,
+                ),
               ),
-            ),
-            const Divider(),
+              const Divider(),
+            ],
 
             Expanded(child: CommentList(initialPost: widget.initialPost)),
 

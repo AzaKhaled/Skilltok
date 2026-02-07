@@ -176,10 +176,10 @@ class _IosStyleContextMenuState extends State<IosStyleContextMenu>
                         constraints: BoxConstraints(
                           maxWidth:
                               MediaQuery.of(context).size.width *
-                              0.8, // ⬅ يمنع زيادة العرض
+                              0.8, 
                           maxHeight:
                               MediaQuery.of(context).size.height *
-                              0.4, // ⬅ يمنع زيادة الطول
+                              0.4, 
                         ),
                         child: SingleChildScrollView(
                           physics: const BouncingScrollPhysics(),
@@ -210,9 +210,7 @@ class _IosStyleContextMenuState extends State<IosStyleContextMenu>
                             ),
                           ],
                         ),
-                        // REMOVED Flexible here
                         child: SingleChildScrollView(
-                          // <--- This is now the direct child of Container
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [

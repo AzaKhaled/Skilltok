@@ -73,7 +73,6 @@ class _PostVideoPlayerState extends State<PostVideoPlayer>
 
   @override
   void didPopNext() {
-    // Optionally resume if visible and autoPlay is on
   }
 
   @override

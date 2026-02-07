@@ -25,7 +25,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
         title: Text(appTranslation().get('comments')),
         centerTitle: true,
       ),
-      body: CommentsSheet(initialPost: initialPost),
+      body: CommentsSheet(initialPost: initialPost, showHeader: false),
     );
   }
 }

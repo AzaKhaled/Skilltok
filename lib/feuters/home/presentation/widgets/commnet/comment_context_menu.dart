@@ -108,7 +108,6 @@ class CommentContextMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // no long press anymore. The three-dot button in the comment item opens this menu.
     return child;
   }
 }

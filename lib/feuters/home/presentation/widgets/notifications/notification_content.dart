@@ -65,7 +65,6 @@ class NotificationContent extends StatelessWidget {
         return appTranslation().get('notification_follow_accept');
       case 'comment':
         String commentText = notification.text ?? '';
-        // Strip English prefix if present (for backward compatibility)
         if (commentText.startsWith("commented on your post: ")) {
           commentText = commentText.replaceFirst(
             "commented on your post: ",

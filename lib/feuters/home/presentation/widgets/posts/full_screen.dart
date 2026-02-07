@@ -38,12 +38,10 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
           ..initialize().then((_) {
             if (mounted) {
               setState(() {});
-              // بدء التشغيل فوراً بعد التهيئة
               _controller.play();
             }
           });
 
-    // بدء التشغيل حتى قبل اكتمال التهيئة (progressive loading)
     _controller.play();
   }
 
@@ -62,7 +60,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
 
   @override
   void didPushNext() {
-    // Stop video when another screen is pushed
     if (_controller.value.isPlaying) {
       _controller.pause();
     }
@@ -70,7 +67,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
 
   @override
   void didPopNext() {
-    // Optionally resume when coming back
     if (!_controller.value.isPlaying) {
       _controller.play();
     }
@@ -97,7 +93,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // الفيديو
           FittedBox(
             fit: BoxFit.cover,
             child: SizedBox(
@@ -113,7 +108,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
             ),
           ),
 
-          // مؤشر التحميل (يظهر أثناء buffering أو قبل التهيئة)
           if (!_controller.value.isInitialized || _controller.value.isBuffering)
             Center(
               child: Container(
@@ -129,7 +123,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
               ),
             ),
 
-          // أيقونة Play/Pause (تظهر فقط عندما يكون الفيديو متوقف وليس قيد التحميل)
           if (!_controller.value.isPlaying &&
               _controller.value.isInitialized &&
               !_controller.value.isBuffering)
@@ -150,7 +143,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
               ),
             ),
 
-          // شريط التقدم
           Positioned(
             left: 0,
             right: 0,
@@ -166,7 +158,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
             ),
           ),
 
-          // ===== Overlay الأيقونات =====
           PositionedDirectional(
             start: 16,
             end: 96,
@@ -229,8 +220,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
                 ),
 
                 const SizedBox(height: 8),
-
-                // ===== CAPTION (SCROLLABLE DOWN) =====
                 ScrollableCaption(text: widget.post.text),
               ],
             ),
@@ -242,13 +231,24 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
             bottom: 20,
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: ColorsManager.primary.withValues(alpha: 0.1),
-                  backgroundImage: widget.post.userProfilePic.isNotEmpty
-                      ? CachedNetworkImageProvider(widget.post.userProfilePic)
-                      : null,
-                ),
+                 CircleAvatar(
+                        radius: 18,
+                        backgroundColor: ColorsManager.primary.withValues(
+                          alpha: 0.1,
+                        ),
+                        backgroundImage: widget.post.userProfilePic.isNotEmpty
+                            ? CachedNetworkImageProvider(
+                                widget.post.userProfilePic,
+                              )
+                            : null,
+                        child: widget.post.userProfilePic.isEmpty
+                            ? const Icon(
+                                Icons.person,
+                                color: ColorsManager.primary,
+                              )
+                            : null,
+                      ),
+                    
                 const SizedBox(height: 16),
                 _IconButton(
                   icon: isLiked ? Icons.favorite : Icons.favorite_border,
@@ -366,40 +366,6 @@ class _FullScreenPostCardState extends State<FullScreenPostCard>
   }
 }
 
-// // أيقونات صغيرة
-// class _IconButton extends StatelessWidget {
-//   final IconData icon;
-//   final String label;
-//   final VoidCallback onTap;
-//   final Color? color;
-
-//   const _IconButton({
-//     required this.icon,
-//     required this.label,
-//     required this.onTap,
-//     this.color,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         InkWell(
-//           onTap: onTap,
-//           child: Icon(icon, size: 36, color: color ?? Colors.white),
-//         ),
-//         if (label.isNotEmpty) const SizedBox(height: 6),
-//         if (label.isNotEmpty)
-//           Text(
-//             label,
-//             style: TextStylesManager.regular12.copyWith(color: Colors.white),
-//           ),
-//       ],
-//     );
-//   }
-// }
-
-// أيقونات صغيرة
 class _IconButton extends StatelessWidget {
   final IconData icon;
   final String label;

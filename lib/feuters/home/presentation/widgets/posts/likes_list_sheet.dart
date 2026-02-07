@@ -17,12 +17,8 @@ class LikesListSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final postCubit = PostCubit.get(context);
-
     final themeCubit = ThemeCubit.get(context);
     final isDark = themeCubit.isDarkMode;
-
-    // If it's a screen, we don't want the rounded top corners and white background might be handled by Scaffold.
-    // However, if we want it white:
     return Container(
       decoration: isScreen
           ? null

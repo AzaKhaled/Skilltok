@@ -36,17 +36,10 @@ class CommentItem extends StatelessWidget {
     final isMe = userCubit.userModel?.uid == comment.userId;
     final currentUserId = userCubit.userModel?.uid ?? '';
     final isReacted = comment.reactions.contains(currentUserId);
-    // Removed unused card variable
 
-    // Direct return of logic since we removed the previous card wrapper
-    // Old card block removed
 
     final bool isReply = indentLevel > 0;
     final double avatarSize = isReply ? 12 : 18;
-    // Indent: if reply, push significantly.
-    // Parent avatar (36) + space (12) + margin (12) = 60.
-    // So reply padding should start around there.
-    // Let's use left padding based on indent level logic but customized.
     final double leftPadding = isReply
         ? (44.0 + (indentLevel - 1) * 20.0)
         : 0.0;
@@ -201,23 +194,10 @@ class CommentItem extends StatelessWidget {
                               postId: postId,
                               comment: comment,
                               child: const SizedBox(),
-                              // We just want logic, typically context menus open from an anchor.
-                              // But since existing logic wraps a child, we can just trigger it.
-                              // Alternatively, we can just use the more_vert icon as before but smaller/placed differently if desired.
-                              // Wait, user asked for Instagram style. Instagram has NO 3-dots on comment usually, they use long-press or swipe.
-                              // But we'll keep the button for functionality but maybe make it subtle or just use the whole item for context?
-                              // The user complained about "clicking 3 dots" causing overflow in the previous request.
-                              // For now, let's keep it simple: no 3 dots in the row, maybe long press on the text?
-                              // I will leave the 3 dots but maybe hidden or less intrusive.
-                              // Actually, let's keep the more_vert but maybe in the metadata row properly.
                             ),
                             child:
-                                const SizedBox.shrink(), // hiding explicit 3 dots to look like clean instagram, assuming long press or similar might be better eventually.
-                            // BUT wait, previous user request mentioned pressing 3 dots.
-                            // I should probably keep a way to access options.
-                            // Let's add it back to the end or keep it overlay.
+                                const SizedBox.shrink(), 
                           ),
-                          // Let's add the 3 dots to the end of the metadata row for robust access
                           InkWell(
                             onTap: () => CommentContextMenu.showMenu(
                               context,

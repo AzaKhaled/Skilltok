@@ -25,11 +25,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
   @override
   void initState() {
     super.initState();
-    // Clear previous state when entering the screen
     postCubit.removePostVideo();
     postCubit.postTextController.clear();
-    postCubit.isPrivate = false; // Reset privacy too if needed
-  }
+    postCubit.isPrivate = false; }
 
   void toggleEmojiPicker() {
     setState(() => isEmojiVisible = !isEmojiVisible);
