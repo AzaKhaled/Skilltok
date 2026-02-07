@@ -107,11 +107,11 @@ class HomeLikePostErrorState extends HomeStates {
 
   HomeLikePostErrorState(this.error);
 }
-class HomePickPostVideoState  extends HomeStates {
-}
 
-class HomeRemovePostVideoState  extends HomeStates {
-}
+class HomePickPostVideoState extends HomeStates {}
+
+class HomeRemovePostVideoState extends HomeStates {}
+
 // Comments
 class HomeAddCommentLoadingState extends HomeStates {}
 
@@ -258,6 +258,7 @@ class ChatUploadImageErrorState extends HomeStates {
   final String error;
   ChatUploadImageErrorState(this.error);
 }
+
 class HomeHeartAnimationState extends HomeStates {
   final String videoUrl;
   HomeHeartAnimationState(this.videoUrl);

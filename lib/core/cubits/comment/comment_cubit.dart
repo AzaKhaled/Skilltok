@@ -52,7 +52,7 @@ class CommentCubit extends Cubit<CommentStates> {
   }) async {
     emit(CommentAddCommentLoadingState());
     try {
-      final parent = parentCommentId ?? this.replyToCommentId;
+      final parent = parentCommentId ?? replyToCommentId;
       final rUsername = replyToUsername ?? this.replyToUsername;
       final rUserId = replyToUserId ?? this.replyToUserId;
 

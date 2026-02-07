@@ -5,15 +5,11 @@ import 'package:skilltok/core/utils/constants/primary/emoji_picker_container.dar
 import 'package:skilltok/core/utils/constants/spacing.dart';
 import 'package:skilltok/core/theme/colors.dart';
 import 'package:skilltok/core/cubits/post/post_cubit.dart';
-import 'package:skilltok/core/utils/extensions/context_extension.dart';
 import 'package:skilltok/feuters/home/presentation/widgets/add_post/add_post_actions.dart';
 import 'package:skilltok/feuters/home/presentation/widgets/add_post/add_post_app_bar.dart';
 import 'package:skilltok/feuters/home/presentation/widgets/add_post/add_post_buttom.dart';
 import 'package:skilltok/feuters/home/presentation/widgets/add_post/post_image_preview.dart';
 import 'package:skilltok/feuters/home/presentation/widgets/add_post/post_text_field.dart';
-
-import 'package:skilltok/feuters/home/presentation/widgets/add_post/add_post_actions.dart';
-import 'package:skilltok/feuters/home/presentation/widgets/add_post/add_post_app_bar.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({super.key});

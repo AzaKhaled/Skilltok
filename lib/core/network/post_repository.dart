@@ -36,15 +36,15 @@ class PostRepository {
   }
 
   Stream<List<PostModel>> getPosts() {
-    return _firestore
-        .collection('posts')
-        .orderBy('timestamp', descending: true)
-        .snapshots()
-        .map(
-          (snapshot) => snapshot.docs
-              .map((doc) => PostModel.fromMap(doc.data(), doc.id))
-              .toList(),
-        );
+    return _firestore.collection('posts').snapshots().map((snapshot) {
+      final posts = snapshot.docs
+          .map((doc) => PostModel.fromMap(doc.data(), doc.id))
+          .toList();
+
+      posts.shuffle(); // 🔀 هنا الشفل
+
+      return posts;
+    });
   }
 
   Stream<PostModel> getPostStream(String postId) {

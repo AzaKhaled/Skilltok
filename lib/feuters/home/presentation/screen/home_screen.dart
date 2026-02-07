@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skilltok/core/theme/colors.dart';
 import 'package:skilltok/core/utils/constants/primary/conditional_builder.dart';
 import 'package:skilltok/core/utils/constants/routes.dart';
 import 'package:skilltok/core/utils/constants/constants.dart';

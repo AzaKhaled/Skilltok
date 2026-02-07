@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skilltok/core/cubits/theme/theme_cubit.dart';
 import 'package:skilltok/core/utils/constants/constants.dart';
 import 'package:skilltok/core/cubits/bottom_nav/bottom_nav_cubit.dart';
 import 'package:skilltok/core/cubits/notification/notification_cubit.dart';
@@ -49,104 +50,109 @@ class _ButtomNavState extends State<ButtomNav> {
                   }
                 }
 
-                return BlocBuilder<LanguageCubit, LanguageStates>(
-                  builder: (context, langState) {
-                    return Scaffold(
-                      body: bottomNavCubit.pages[bottomNavCubit.currentIndex],
-                      bottomNavigationBar: BottomNavigationBar(
-                        type: BottomNavigationBarType.fixed,
-                        showUnselectedLabels: false,
-                        showSelectedLabels: false,
-                        elevation: 0,
-                        currentIndex: bottomNavCubit.currentIndex,
-                        onTap: (index) {
-                          bottomNavCubit.currentIndex = index;
-                        },
-                        items: [
-                          BottomNavigationBarItem(
-                            icon: BottomNavItemWidget(
-                              icon: Icons.home_outlined,
-                              activeIcon: Icons.home,
-                              label: appTranslation().get('home'),
-                              isActive: bottomNavCubit.currentIndex == 0,
-                            ),
-                            activeIcon: BottomNavItemWidget(
-                              icon: Icons.home_outlined,
-                              activeIcon: Icons.home,
-                              label: appTranslation().get('home'),
-                              isActive: true,
-                            ),
-                            label: '',
+                return BlocBuilder<ThemeCubit, ThemeStates>(
+                  builder: (context, state) {
+                    return BlocBuilder<LanguageCubit, LanguageStates>(
+                      builder: (context, langState) {
+                        return Scaffold(
+                          body:
+                              bottomNavCubit.pages[bottomNavCubit.currentIndex],
+                          bottomNavigationBar: BottomNavigationBar(
+                            type: BottomNavigationBarType.fixed,
+                            showUnselectedLabels: false,
+                            showSelectedLabels: false,
+                            elevation: 0,
+                            currentIndex: bottomNavCubit.currentIndex,
+                            onTap: (index) {
+                              bottomNavCubit.currentIndex = index;
+                            },
+                            items: [
+                              BottomNavigationBarItem(
+                                icon: BottomNavItemWidget(
+                                  icon: Icons.home_outlined,
+                                  activeIcon: Icons.home,
+                                  label: appTranslation().get('home'),
+                                  isActive: bottomNavCubit.currentIndex == 0,
+                                ),
+                                activeIcon: BottomNavItemWidget(
+                                  icon: Icons.home_outlined,
+                                  activeIcon: Icons.home,
+                                  label: appTranslation().get('home'),
+                                  isActive: true,
+                                ),
+                                label: '',
+                              ),
+                              BottomNavigationBarItem(
+                                icon: BottomNavItemWidget(
+                                  icon: Icons.chat_bubble_outline,
+                                  activeIcon: Icons.chat_bubble,
+                                  label: appTranslation().get('chats'),
+                                  isActive: bottomNavCubit.currentIndex == 1,
+                                  badgeCount: chatUnreadCount,
+                                ),
+                                activeIcon: BottomNavItemWidget(
+                                  icon: Icons.chat_bubble_outline,
+                                  activeIcon: Icons.chat_bubble,
+                                  label: appTranslation().get('chats'),
+                                  isActive: true,
+                                  badgeCount: chatUnreadCount,
+                                ),
+                                label: '',
+                              ),
+                              BottomNavigationBarItem(
+                                icon: BottomNavItemWidget(
+                                  icon: Icons.add_circle_outline,
+                                  activeIcon: Icons.add_circle,
+                                  label: appTranslation().get('add_post'),
+                                  isActive: bottomNavCubit.currentIndex == 2,
+                                ),
+                                activeIcon: BottomNavItemWidget(
+                                  icon: Icons.add_circle_outline,
+                                  activeIcon: Icons.add_circle,
+                                  label: appTranslation().get('add_post'),
+                                  isActive: true,
+                                ),
+                                label: '',
+                              ),
+                              BottomNavigationBarItem(
+                                icon: BottomNavItemWidget(
+                                  icon: Icons.notifications_outlined,
+                                  activeIcon: Icons.notifications,
+                                  label: appTranslation().get('notifications'),
+                                  isActive: bottomNavCubit.currentIndex == 3,
+                                  badgeCount: notificationCubit
+                                      .unreadNotificationsCount,
+                                ),
+                                activeIcon: BottomNavItemWidget(
+                                  icon: Icons.notifications_outlined,
+                                  activeIcon: Icons.notifications,
+                                  label: appTranslation().get('notifications'),
+                                  isActive: true,
+                                  badgeCount: notificationCubit
+                                      .unreadNotificationsCount,
+                                ),
+                                label: '',
+                              ),
+                              BottomNavigationBarItem(
+                                icon: BottomNavItemWidget(
+                                  icon: Icons.person_outline,
+                                  activeIcon: Icons.person,
+                                  label: appTranslation().get('profile'),
+                                  isActive: bottomNavCubit.currentIndex == 4,
+                                ),
+                                activeIcon: BottomNavItemWidget(
+                                  icon: Icons.person_outline,
+                                  activeIcon: Icons.person,
+                                  label: appTranslation().get('profile'),
+                                  isActive: true,
+                                ),
+                                label: '',
+                              ),
+                              // Settings hidden
+                            ],
                           ),
-                          BottomNavigationBarItem(
-                            icon: BottomNavItemWidget(
-                              icon: Icons.chat_bubble_outline,
-                              activeIcon: Icons.chat_bubble,
-                              label: appTranslation().get('chats'),
-                              isActive: bottomNavCubit.currentIndex == 1,
-                              badgeCount: chatUnreadCount,
-                            ),
-                            activeIcon: BottomNavItemWidget(
-                              icon: Icons.chat_bubble_outline,
-                              activeIcon: Icons.chat_bubble,
-                              label: appTranslation().get('chats'),
-                              isActive: true,
-                              badgeCount: chatUnreadCount,
-                            ),
-                            label: '',
-                          ),
-                          BottomNavigationBarItem(
-                            icon: BottomNavItemWidget(
-                              icon: Icons.add_circle_outline,
-                              activeIcon: Icons.add_circle,
-                              label: appTranslation().get('add_post'),
-                              isActive: bottomNavCubit.currentIndex == 2,
-                            ),
-                            activeIcon: BottomNavItemWidget(
-                              icon: Icons.add_circle_outline,
-                              activeIcon: Icons.add_circle,
-                              label: appTranslation().get('add_post'),
-                              isActive: true,
-                            ),
-                            label: '',
-                          ),
-                          BottomNavigationBarItem(
-                            icon: BottomNavItemWidget(
-                              icon: Icons.notifications_outlined,
-                              activeIcon: Icons.notifications,
-                              label: appTranslation().get('notifications'),
-                              isActive: bottomNavCubit.currentIndex == 3,
-                              badgeCount:
-                                  notificationCubit.unreadNotificationsCount,
-                            ),
-                            activeIcon: BottomNavItemWidget(
-                              icon: Icons.notifications_outlined,
-                              activeIcon: Icons.notifications,
-                              label: appTranslation().get('notifications'),
-                              isActive: true,
-                              badgeCount:
-                                  notificationCubit.unreadNotificationsCount,
-                            ),
-                            label: '',
-                          ),
-                          BottomNavigationBarItem(
-                            icon: BottomNavItemWidget(
-                              icon: Icons.person_outline,
-                              activeIcon: Icons.person,
-                              label: appTranslation().get('profile'),
-                              isActive: bottomNavCubit.currentIndex == 4,
-                            ),
-                            activeIcon: BottomNavItemWidget(
-                              icon: Icons.person_outline,
-                              activeIcon: Icons.person,
-                              label: appTranslation().get('profile'),
-                              isActive: true,
-                            ),
-                            label: '',
-                          ),
-                          // Settings hidden
-                        ],
-                      ),
+                        );
+                      },
                     );
                   },
                 );

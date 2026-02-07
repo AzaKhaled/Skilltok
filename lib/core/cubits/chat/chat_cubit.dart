@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skilltok/core/models/message_model.dart';
 import 'package:skilltok/core/models/user_model.dart';
@@ -10,7 +11,7 @@ part 'chat_state.dart';
 class ChatCubit extends Cubit<ChatStates> {
   ChatCubit() : super(ChatInitialState());
 
-  static ChatCubit get(context) => BlocProvider.of(context);
+  static ChatCubit get(BuildContext context) => BlocProvider.of(context);
 
   final ChatRepository _chatRepo = ChatRepository();
   final UserRepository _userRepo = UserRepository();

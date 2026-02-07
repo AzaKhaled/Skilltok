@@ -77,7 +77,8 @@ class _UserTile extends StatelessWidget {
 
         return ListTile(
           leading: CircleAvatar(
-            backgroundImage: (user.photoUrl != null && user.photoUrl!.isNotEmpty)
+            backgroundImage:
+                (user.photoUrl != null && user.photoUrl!.isNotEmpty)
                 ? NetworkImage(user.photoUrl!)
                 : null,
             child: (user.photoUrl == null || user.photoUrl!.isEmpty)

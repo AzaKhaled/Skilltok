@@ -31,8 +31,8 @@ class AuthCubit extends Cubit<AuthStates> {
 
   //login
   final Map<String, bool> _passwordVisibility = {
-    'login': false,
-    'register': false,
+    'login': true,
+    'register': true,
   };
 
   Map<String, bool> get passwordVisibility => _passwordVisibility;

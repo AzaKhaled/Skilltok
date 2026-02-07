@@ -39,7 +39,9 @@ class PostTextField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
-              color: ColorsManager.primary.withValues(alpha: 0.5), // إضاءة خفيفة عند التركيز
+              color: ColorsManager.primary.withValues(
+                alpha: 0.5,
+              ), // إضاءة خفيفة عند التركيز
               width: 1,
             ),
           ),

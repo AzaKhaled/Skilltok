@@ -18,7 +18,9 @@ class NotificationItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (!notification.isRead) {
-          NotificationCubit.get(context).markNotificationAsRead(notification.notificationId);
+          NotificationCubit.get(
+            context,
+          ).markNotificationAsRead(notification.notificationId);
         }
 
         NotificationService.handleNotification(context, {

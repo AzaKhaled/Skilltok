@@ -75,6 +75,7 @@ class CommentContextMenu extends StatelessWidget {
                               commentId: comment.commentId,
                               newText: newText,
                             );
+                            if (!context.mounted) return;
                             Navigator.of(ctx).pop();
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(

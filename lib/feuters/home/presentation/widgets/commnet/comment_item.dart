@@ -158,7 +158,9 @@ class CommentItem extends StatelessWidget {
                           child: Text(
                             '${appTranslation().get('replying_to')} @${comment.replyToUsername}',
                             style: TextStylesManager.regular12.copyWith(
-                              color: ColorsManager.primary.withOpacity(0.8),
+                              color: ColorsManager.primary.withValues(
+                                alpha: .8,
+                              ),
                             ),
                           ),
                         ),

@@ -1,4 +1,3 @@
-
 part of 'auth_cubit.dart';
 
 abstract class AuthStates {}

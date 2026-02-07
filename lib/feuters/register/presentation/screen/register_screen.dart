@@ -23,7 +23,6 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthStates>(
       buildWhen: (_, state) =>
-          state is AuthShowPasswordUpdatedState ||
           state is AuthRegisterLoadingState ||
           state is AuthRegisterSuccessState ||
           state is AuthRegisterErrorState,

@@ -5,7 +5,6 @@ import 'package:skilltok/core/cubits/post/post_cubit.dart';
 import 'package:skilltok/feuters/home/presentation/widgets/commnet/comment_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skilltok/core/cubits/comment/comment_cubit.dart';
-import 'package:skilltok/core/utils/constants/constants.dart';
 
 class CommentList extends StatelessWidget {
   final PostModel initialPost;
@@ -138,7 +137,7 @@ class _CommentWithRepliesState extends State<CommentWithReplies> {
                     Container(
                       width: 24,
                       height: 1,
-                      color: Colors.grey.withOpacity(0.3),
+                      color: Colors.grey.withValues(alpha: .3),
                     ),
                     const SizedBox(width: 8),
                     Text(
@@ -174,7 +173,7 @@ class _CommentWithRepliesState extends State<CommentWithReplies> {
                         Container(
                           width: 24,
                           height: 1,
-                          color: Colors.grey.withOpacity(0.3),
+                          color: Colors.grey.withValues(alpha: .3),
                         ),
                         const SizedBox(width: 8),
                         const Text(

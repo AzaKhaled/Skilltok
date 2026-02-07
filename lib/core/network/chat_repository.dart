@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:skilltok/core/models/message_model.dart';
 
 class ChatRepository {
@@ -140,7 +141,7 @@ class ChatRepository {
       await batch.commit();
     } catch (e) {
       // Ignore permission errors if rules aren't set up yet, to avoid crashing UI
-      print("Error marking messages as seen: $e");
+      debugPrint("Error marking messages as seen: $e");
     }
   }
 }

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skilltok/core/theme/colors.dart';
 import 'package:skilltok/core/utils/constants/constants.dart';
-
-import 'package:skilltok/core/cubits/bottom_nav/bottom_nav_cubit.dart';
 
 class AddPostAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AddPostAppBar({super.key});

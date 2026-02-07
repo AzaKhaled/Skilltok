@@ -17,7 +17,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     super.initState();
     final userCubit = UserCubit.get(context);
     if (userCubit.userModel != null) {
-      NotificationCubit.get(context).getNotifications(userCubit.userModel!.uid!);
+      NotificationCubit.get(
+        context,
+      ).getNotifications(userCubit.userModel!.uid!);
     }
   }
 

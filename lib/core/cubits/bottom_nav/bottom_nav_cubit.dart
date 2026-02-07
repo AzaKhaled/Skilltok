@@ -4,7 +4,6 @@ import 'package:skilltok/feuters/home/presentation/screen/home_screen.dart';
 import 'package:skilltok/feuters/home/presentation/widgets/notifications/notifications_screen.dart';
 import 'package:skilltok/feuters/home/presentation/widgets/add_post_screen.dart';
 import 'package:skilltok/feuters/profile/presentation/screen/profile_screen.dart';
-import 'package:skilltok/feuters/settings/presentation/screen/settings_screen.dart';
 import 'package:skilltok/feuters/chat/presentation/screen/chats_screen.dart';
 
 part 'bottom_nav_state.dart';

@@ -171,7 +171,7 @@ class ProfileHeader extends StatelessWidget {
   }
 
   Widget _buildStatColumn(String title, String value, {VoidCallback? onTap}) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Column(
         children: [

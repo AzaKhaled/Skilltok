@@ -10,7 +10,7 @@ class RegisterHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         Image.asset(AssetsHelper.logo, height: 90, width: 90),
         Transform.translate(
@@ -32,6 +32,5 @@ class RegisterHeader extends StatelessWidget {
         ),
       ],
     );
-  
   }
 }
