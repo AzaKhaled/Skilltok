@@ -44,7 +44,7 @@ The app focuses on real-time interaction, privacy control, personalization, and 
 
 |               Add post                   |              Profile                  |                Chat              |
 |:----------------------------------------:|:-------------------------------------:|:--------------------------------:|
-| ![Add Post](assets/images/add_post.jpeg) | ![Profile](assets/images/profile.jpg) | ![Chat](assets/images/chats.jpg) |
+| ![Add Post](assets/images/add_post.jpg) | ![Profile](assets/images/profile.jpg) | ![Chat](assets/images/chat.jpg) |
 
 ---
 
